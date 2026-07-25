@@ -9,6 +9,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+
 <style>
 
 :root{
@@ -20,11 +21,13 @@
 --muted:#8A8A8A;
 }
 
+
 *{
 box-sizing:border-box;
 margin:0;
 padding:0;
 }
+
 
 body{
 
@@ -33,11 +36,14 @@ color:var(--white);
 font-family:'Inter',sans-serif;
 
 min-height:100vh;
+
 display:flex;
 justify-content:center;
+
 padding:30px 15px;
 
 }
+
 
 
 .app{
@@ -48,11 +54,13 @@ max-width:420px;
 }
 
 
+
 .hidden{
 
 display:none!important;
 
 }
+
 
 
 .brand{
@@ -61,6 +69,7 @@ text-align:center;
 margin-bottom:25px;
 
 }
+
 
 
 .mark{
@@ -82,22 +91,29 @@ font-weight:800;
 }
 
 
+
 .school{
 
 margin-top:12px;
+
 font-size:11px;
+
 letter-spacing:3px;
+
 color:var(--muted);
 
 }
 
 
+
 .brand h1{
 
-font-size:21px;
+font-size:22px;
+
 margin-top:5px;
 
 }
+
 
 
 
@@ -107,11 +123,12 @@ background:var(--panel);
 
 border:1px solid var(--line);
 
-padding:30px 25px;
-
 border-radius:16px;
 
+padding:30px 25px;
+
 }
+
 
 
 
@@ -129,9 +146,9 @@ display:block;
 
 font-size:11px;
 
-color:var(--muted);
+letter-spacing:1.5px;
 
-letter-spacing:1px;
+color:var(--muted);
 
 margin-bottom:8px;
 
@@ -169,6 +186,7 @@ border-color:white;
 
 
 
+
 .btn{
 
 width:100%;
@@ -187,6 +205,16 @@ font-weight:700;
 
 cursor:pointer;
 
+font-size:14px;
+
+}
+
+
+
+.btn:hover{
+
+opacity:.85;
+
 }
 
 
@@ -197,7 +225,9 @@ color:#ff5555;
 
 font-size:13px;
 
-margin-top:10px;
+margin-top:12px;
+
+min-height:15px;
 
 }
 
@@ -211,21 +241,24 @@ padding-top:15px;
 
 border-top:1px dashed var(--line);
 
-text-align:center;
-
 font-size:12px;
 
 color:var(--muted);
+
+text-align:center;
+
+line-height:1.6;
 
 }
 
 
 
-/* ID CARD */
+
+/* ID CARD STYLE */
 
 .id-card{
 
-background:linear-gradient(160deg,#1e1e1e,#111);
+background:linear-gradient(160deg,#1E1E1E,#111);
 
 border:1px solid var(--line);
 
@@ -243,7 +276,7 @@ height:6px;
 
 background:white;
 
-opacity:.2;
+opacity:.25;
 
 }
 
@@ -251,11 +284,13 @@ opacity:.2;
 
 .card-head{
 
-padding:20px;
+padding:18px 20px;
 
 display:flex;
 
 justify-content:space-between;
+
+align-items:center;
 
 }
 
@@ -263,13 +298,13 @@ justify-content:space-between;
 
 .tag{
 
-border:1px solid white;
+font-size:10px;
 
-border-radius:20px;
+border:1px solid white;
 
 padding:4px 10px;
 
-font-size:10px;
+border-radius:20px;
 
 }
 
@@ -277,7 +312,7 @@ font-size:10px;
 
 .card-body{
 
-padding:20px;
+padding:25px;
 
 text-align:center;
 
@@ -295,13 +330,13 @@ border-radius:50%;
 
 border:2px solid white;
 
-margin:auto;
-
 display:flex;
+
+justify-content:center;
 
 align-items:center;
 
-justify-content:center;
+margin:auto;
 
 font-size:28px;
 
@@ -311,25 +346,13 @@ font-weight:800;
 
 
 
-.card-body h2{
-
-margin-top:15px;
-
-font-size:21px;
-
-}
-
-
-
 .details{
-
-border-top:1px solid var(--line);
 
 margin-top:20px;
 
-padding-top:15px;
+border-top:1px solid var(--line);
 
-text-align:left;
+padding-top:15px;
 
 }
 
@@ -359,19 +382,21 @@ color:var(--muted);
 
 .logout{
 
+margin-top:20px;
+
 width:100%;
 
 padding:13px;
 
-margin-top:20px;
-
 background:none;
-
-color:white;
 
 border:1px solid var(--line);
 
+color:white;
+
 border-radius:10px;
+
+cursor:pointer;
 
 }
 
@@ -394,19 +419,25 @@ border-radius:10px;
 ID
 </div>
 
+
 <div class="school">
 YOUR SCHOOL NAME
 </div>
+
 
 <h1>
 Smart Digital ID
 </h1>
 
+
 </div>
 
 
 
-<!-- LOGIN -->
+
+
+<!-- LOGIN SCREEN -->
+
 
 <div id="loginScreen" class="login-panel">
 
@@ -417,9 +448,13 @@ Smart Digital ID
 USERNAME
 </label>
 
-<input id="username" type="text">
+<input 
+id="username"
+type="text"
+placeholder="Enter username">
 
 </div>
+
 
 
 
@@ -429,9 +464,13 @@ USERNAME
 PASSWORD
 </label>
 
-<input id="password" type="password">
+<input 
+id="password"
+type="password"
+placeholder="Enter password">
 
 </div>
+
 
 
 
@@ -442,21 +481,26 @@ LOGIN
 </button>
 
 
+
 <div id="loginError" class="error"></div>
+
 
 
 <div class="hint">
 
-Username + Password use cheyth login cheyyuka.
+Use your username and password to view your Digital ID.
 
 </div>
 
 
+
 </div>
 
 
 
-<!-- CARD -->
+
+
+<!-- CARD SCREEN -->
 
 <div id="cardScreen" class="hidden">
 
@@ -468,21 +512,19 @@ Username + Password use cheyth login cheyyuka.
 
   <script type="module">
 
-// Firebase Imports
-
 import { initializeApp } from 
 "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
-import { 
+import {
 getFirestore,
 doc,
 getDoc
-} from 
+}
+from
 "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
-
-// Firebase Configuration
+// Firebase Config
 
 const firebaseConfig = {
 
@@ -503,7 +545,6 @@ measurementId: "G-1KBNT4KN2R"
 };
 
 
-
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
@@ -512,7 +553,7 @@ const db = getFirestore(app);
 
 
 
-// Login Elements
+// Elements
 
 const loginScreen = document.getElementById("loginScreen");
 
@@ -523,8 +564,7 @@ const loginError = document.getElementById("loginError");
 
 
 
-
-// LOGIN FUNCTION
+// Login Function
 
 window.attemptLogin = async function(){
 
@@ -536,6 +576,7 @@ const username = document
 .toLowerCase();
 
 
+
 const password = document
 .getElementById("password")
 .value
@@ -543,13 +584,14 @@ const password = document
 
 
 
-loginError.innerHTML="";
+loginError.innerHTML = "";
 
 
 
-if(!username || !password){
+if(username === "" || password === ""){
 
-loginError.innerHTML="Enter username and password";
+loginError.innerHTML =
+"Enter username and password";
 
 return;
 
@@ -560,7 +602,7 @@ return;
 try{
 
 
-// Firestore document check
+// Firestore check
 
 const studentRef = doc(
 db,
@@ -585,16 +627,12 @@ if(student.password === password){
 
 
 
-// Save login
-
 sessionStorage.setItem(
-"student",
+"studentData",
 JSON.stringify(student)
 );
 
 
-
-// Open ID Card
 
 showCard(student);
 
@@ -605,9 +643,8 @@ showCard(student);
 else{
 
 
-loginError.innerHTML=
+loginError.innerHTML =
 "Wrong password";
-
 
 }
 
@@ -618,9 +655,8 @@ loginError.innerHTML=
 else{
 
 
-loginError.innerHTML=
+loginError.innerHTML =
 "Student not found";
-
 
 }
 
@@ -633,30 +669,29 @@ catch(error){
 
 console.log(error);
 
-loginError.innerHTML=
+
+loginError.innerHTML =
 "Database connection error";
 
-
-}
-
-
 }
 
 
 
+}
 
 
-</script>
+
+  </script>
 
   <script>
 
-// Get initials for avatar
+// Get initials
 
 function getInitials(name){
 
 return name
 .split(" ")
-.map(word=>word[0])
+.map(x=>x[0])
 .join("")
 .substring(0,2)
 .toUpperCase();
@@ -665,7 +700,7 @@ return name
 
 
 
-// Show Student Card
+// Show ID Card
 
 window.showCard = function(student){
 
@@ -684,21 +719,26 @@ cardScreen.innerHTML = `
 <div class="stripe"></div>
 
 
+
 <div class="card-head">
 
 <span>
 YOUR SCHOOL NAME
 </span>
 
+
 <span class="tag">
 STUDENT ID
 </span>
+
 
 </div>
 
 
 
+
 <div class="card-body">
+
 
 
 <div class="avatar">
@@ -709,17 +749,16 @@ ${getInitials(student.name)}
 
 
 
+
 <h2>
 ${student.name}
 </h2>
 
 
 
-<div style="color:#8A8A8A;margin-top:5px">
-
+<p style="color:#8A8A8A;margin-top:5px;">
 Class ${student.class}
-
-</div>
+</p>
 
 
 
@@ -741,6 +780,7 @@ ${student.dob}
 
 
 
+
 <div class="row">
 
 <span class="label">
@@ -752,6 +792,7 @@ ${student.blood}
 </span>
 
 </div>
+
 
 
 
@@ -768,6 +809,7 @@ ${student.contact}
 </div>
 
 
+
 </div>
 
 
@@ -777,13 +819,15 @@ ${student.contact}
 margin-top:20px;
 display:flex;
 justify-content:center;
-"></div>
+">
+</div>
+
 
 
 
 <button class="logout" onclick="logout()">
 
-Logout
+LOGOUT
 
 </button>
 
@@ -792,21 +836,54 @@ Logout
 </div>
 
 
+
 </div>
 
 `;
 
 
 
-// QR Code
+// Load QR library
 
-const qrScript = document.createElement("script");
+if(!window.QRCode){
 
-qrScript.src =
+
+const script=document.createElement("script");
+
+script.src=
 "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
 
 
-qrScript.onload = ()=>{
+script.onload=function(){
+
+createQR(student);
+
+};
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+else{
+
+
+createQR(student);
+
+
+}
+
+
+
+}
+
+
+
+// QR Generator
+
+function createQR(student){
 
 
 new QRCode(
@@ -825,13 +902,6 @@ height:90
 );
 
 
-};
-
-
-document.body.appendChild(qrScript);
-
-
-
 }
 
 
@@ -842,7 +912,7 @@ document.body.appendChild(qrScript);
 window.logout=function(){
 
 
-sessionStorage.removeItem("student");
+sessionStorage.removeItem("studentData");
 
 
 cardScreen.classList.add("hidden");
@@ -862,24 +932,27 @@ document.getElementById("password").value="";
 
 // Auto login after refresh
 
-window.onload=function(){
+window.addEventListener("load",()=>{
 
 
 const saved =
-sessionStorage.getItem("student");
+sessionStorage.getItem("studentData");
+
 
 
 if(saved){
 
 
-showCard(JSON.parse(saved));
+showCard(
+JSON.parse(saved)
+);
 
 
 }
 
 
-}
 
+});
 
 
 </script>
