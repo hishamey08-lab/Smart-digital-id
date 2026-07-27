@@ -17,34 +17,92 @@ body{
 }
 .app{ width:100%; max-width:420px; }
 .hidden{ display:none!important; }
-.brand{ text-align:center; margin-bottom:25px; }
+
+/* ---------- Animations ---------- */
+@keyframes fadeInUp{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+@keyframes popIn{
+  0%{ opacity:0; transform:scale(.9) translateY(16px); }
+  100%{ opacity:1; transform:scale(1) translateY(0); }
+}
+@keyframes shake{
+  10%,90%{ transform:translateX(-3px); }
+  20%,80%{ transform:translateX(5px); }
+  30%,50%,70%{ transform:translateX(-8px); }
+  40%,60%{ transform:translateX(8px); }
+}
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+@keyframes pulseRing{
+  0%{ box-shadow:0 0 0 0 rgba(255,255,255,.25); }
+  100%{ box-shadow:0 0 0 12px rgba(255,255,255,0); }
+}
+@keyframes ringDraw{
+  from{ stroke-dashoffset: 126; }
+  to{ stroke-dashoffset: 0; }
+}
+
+.brand{ text-align:center; margin-bottom:25px; animation: fadeIn .7s ease both; }
 .mark{
   width:45px; height:45px; border:2px solid white; border-radius:50%;
   display:flex; align-items:center; justify-content:center; margin:auto; font-weight:800;
+  animation: pulseRing 2.4s ease-out infinite;
 }
 .school{ margin-top:12px; font-size:11px; letter-spacing:3px; color:var(--muted); }
 .brand h1{ font-size:22px; margin-top:5px; }
-.login-panel{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:30px 25px; }
-.field{ margin-bottom:18px; }
+
+.login-panel{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:30px 25px;
+  animation: fadeInUp .6s cubic-bezier(.2,.8,.2,1) both;
+}
+.login-panel.shake{ animation: shake .5s ease; }
+
+.field{ margin-bottom:18px; opacity:0; animation: fadeInUp .5s ease both; }
+.field:nth-of-type(1){ animation-delay:.1s; }
+.field:nth-of-type(2){ animation-delay:.2s; }
 .field label{ display:block; font-size:11px; letter-spacing:1.5px; color:var(--muted); margin-bottom:8px; }
 .field input{
   width:100%; padding:14px; background:var(--panel2); border:1px solid var(--line);
-  border-radius:10px; color:white; font-size:15px;
+  border-radius:10px; color:white; font-size:15px; transition:border-color .25s ease, transform .15s ease;
 }
 .field input:focus{ outline:none; border-color:white; }
+
 .btn{
   width:100%; padding:14px; background:white; color:black; border:none;
   border-radius:10px; font-weight:700; cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  transition: opacity .2s ease, transform .15s ease;
+  opacity:0; animation: fadeInUp .5s ease both; animation-delay:.3s;
 }
 .btn:hover{ opacity:.85; }
+.btn:active{ transform:scale(.98); }
+.btn:disabled{ cursor:not-allowed; opacity:.7; }
+
+.spinner{
+  width:15px; height:15px; border-radius:50%;
+  border:2px solid rgba(0,0,0,.25); border-top-color:#000;
+  animation: spin .6s linear infinite;
+  display:inline-block;
+}
+
 .error{ color:#ff5555; font-size:13px; margin-top:12px; min-height:15px; }
 .hint{
   margin-top:20px; padding-top:15px; border-top:1px dashed var(--line);
   font-size:12px; color:var(--muted); text-align:center; line-height:1.6;
+  opacity:0; animation: fadeIn .6s ease both; animation-delay:.4s;
 }
+
 .id-card{
   background:linear-gradient(160deg,#1E1E1E,#111); border:1px solid var(--line);
   border-radius:16px; overflow:hidden;
+  animation: popIn .55s cubic-bezier(.2,.8,.2,1) both;
 }
 .stripe{ height:6px; background:white; opacity:.25; }
 .card-head{ padding:18px 20px; display:flex; justify-content:space-between; align-items:center; }
@@ -54,15 +112,31 @@ body{
   width:90px; height:90px; border-radius:50%; border:2px solid white;
   display:flex; justify-content:center; align-items:center; margin:auto;
   font-size:28px; font-weight:800;
+  animation: popIn .5s cubic-bezier(.2,.8,.2,1) both; animation-delay:.1s;
 }
 .details{ margin-top:20px; border-top:1px solid var(--line); padding-top:15px; }
-.row{ display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; }
+.row{
+  display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px;
+  opacity:0; animation: fadeInUp .4s ease both;
+}
+.row:nth-of-type(1){ animation-delay:.15s; }
+.row:nth-of-type(2){ animation-delay:.2s; }
+.row:nth-of-type(3){ animation-delay:.25s; }
+.row:nth-of-type(4){ animation-delay:.3s; }
 .label{ color:var(--muted); }
 .logout{
   margin-top:20px; width:100%; padding:13px; background:none;
   border:1px solid var(--line); color:white; border-radius:10px; cursor:pointer;
+  transition: background .2s ease, transform .15s ease;
 }
-.loading-msg{ text-align:center; color:var(--muted); font-size:13px; padding:20px; }
+.logout:hover{ background:var(--panel2); }
+.logout:active{ transform:scale(.98); }
+
+#qrcode{ opacity:0; animation: fadeIn .5s ease both; animation-delay:.4s; }
+
+/* Screen transition helpers */
+.screen-exit{ animation: fadeOut .25s ease both; }
+@keyframes fadeOut{ from{ opacity:1; } to{ opacity:0; } }
 </style>
 </head>
 <body>
@@ -84,7 +158,7 @@ body{
       <label>PASSWORD</label>
       <input id="password" type="password" placeholder="Enter password">
     </div>
-    <button class="btn" onclick="attemptLogin()">LOGIN</button>
+    <button id="loginBtn" class="btn" onclick="attemptLogin()">LOGIN</button>
     <div id="loginError" class="error"></div>
     <div class="hint">Use your username and password to view your Digital ID.</div>
   </div>
@@ -114,6 +188,21 @@ const db = getFirestore(app);
 const loginScreen = document.getElementById("loginScreen");
 const cardScreen  = document.getElementById("cardScreen");
 const loginError  = document.getElementById("loginError");
+const loginBtn    = document.getElementById("loginBtn");
+
+function setLoading(isLoading){
+  loginBtn.disabled = isLoading;
+  loginBtn.innerHTML = isLoading
+    ? '<span class="spinner"></span> CHECKING...'
+    : 'LOGIN';
+}
+
+function shakePanel(){
+  loginScreen.classList.remove("shake");
+  // restart animation
+  void loginScreen.offsetWidth;
+  loginScreen.classList.add("shake");
+}
 
 window.attemptLogin = async function () {
   const username = document.getElementById("username").value.trim().toLowerCase();
@@ -122,9 +211,11 @@ window.attemptLogin = async function () {
 
   if (username === "" || password === "") {
     loginError.innerHTML = "Enter username and password";
+    shakePanel();
     return;
   }
 
+  setLoading(true);
   try {
     const studentRef = doc(db, "students", username);
     const studentSnap = await getDoc(studentRef);
@@ -135,18 +226,33 @@ window.attemptLogin = async function () {
 
       if (student.password === password) {
         sessionStorage.setItem("studentData", JSON.stringify(student));
-        showCard(student);
+        transitionToCard(student);
       } else {
         loginError.innerHTML = "Wrong password";
+        shakePanel();
       }
     } else {
       loginError.innerHTML = "Student not found";
+      shakePanel();
     }
   } catch (error) {
     console.log(error);
     loginError.innerHTML = "Database connection error";
+    shakePanel();
+  } finally {
+    setLoading(false);
   }
 };
+
+function transitionToCard(student){
+  loginScreen.classList.add("screen-exit");
+  setTimeout(() => {
+    loginScreen.classList.add("hidden");
+    loginScreen.classList.remove("screen-exit");
+    showCard(student);
+  }, 220);
+}
+window.transitionToCard = transitionToCard;
 </script>
 
   <script>
@@ -155,7 +261,6 @@ function getInitials(name) {
 }
 
 window.showCard = function (student) {
-  loginScreen.classList.add("hidden");
   cardScreen.classList.remove("hidden");
 
   cardScreen.innerHTML = `
@@ -173,6 +278,7 @@ window.showCard = function (student) {
           <div class="row"><span class="label">Date of Birth</span><span>${student.dob}</span></div>
           <div class="row"><span class="label">Blood Group</span><span>${student.blood}</span></div>
           <div class="row"><span class="label">Emergency Contact</span><span>${student.contact}</span></div>
+          <div class="row"><span class="label">Address</span><span>${student.address || "-"}</span></div>
         </div>
         <div id="qrcode" style="margin-top:20px;display:flex;justify-content:center;"></div>
         <button class="logout" onclick="logout()">LOGOUT</button>
@@ -203,7 +309,8 @@ function createQR(student) {
 window.logout = function () {
   sessionStorage.removeItem("studentData");
   cardScreen.classList.add("hidden");
-  loginScreen.classList.remove("hidden");
+  cardScreen.innerHTML = "";
+  document.getElementById("loginScreen").classList.remove("hidden");
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
 };
@@ -211,6 +318,7 @@ window.logout = function () {
 window.addEventListener("load", () => {
   const saved = sessionStorage.getItem("studentData");
   if (saved) {
+    document.getElementById("loginScreen").classList.add("hidden");
     showCard(JSON.parse(saved));
   }
 });
